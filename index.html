@@ -2,31 +2,123 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SME Mzansi Market</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Shop Marketplace</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Prevents Flash of Unstyled Content (FOUC) for dark mode
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              primary: 'var(--color-primary)',
+              surface: 'var(--color-surface)',
+              'surface-hover': 'var(--color-surface-hover)',
+              'surface-inset': 'var(--color-surface-inset)',
+              accent: 'var(--color-accent)',
+              'accent-variant': 'var(--color-accent-variant)',
+              'text-primary': 'var(--color-text-primary)',
+              'text-secondary': 'var(--color-text-secondary)',
+              'accent-text': 'var(--color-accent-text)',
+              'border-color': 'var(--color-border)',
+            },
+            borderRadius: {
+              'sm': '4px',
+              'md': '8px',
+              'lg': '12px',
+            },
+            boxShadowColor: {
+              DEFAULT: 'var(--color-shadow)',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              fadeInUp: {
+                '0%': {
+                  opacity: '0',
+                  transform: 'translateY(10px)'
+                },
+                '100%': {
+                  opacity: '1',
+                  transform: 'translateY(0)'
+                },
+              },
+            },
+          }
+        }
+      }
+    </script>
     <style>
+      :root {
+        --color-primary: #F9FAFB;
+        --color-surface: #FFFFFF;
+        --color-surface-hover: rgba(0, 0, 0, 0.05);
+        --color-surface-inset: #F3F4F6;
+        --color-text-primary: #1F2937;
+        --color-text-secondary: #6B7280;
+        --color-border: #E5E7EB;
+        --color-accent: #EF4444;
+        --color-accent-variant: #DC2626;
+        --color-accent-text: #FFFFFF;
+        --color-shadow: rgba(0,0,0,0.1);
+      }
+      .dark {
+        --color-primary: #1A1A1A;
+        --color-surface: #222222;
+        --color-surface-hover: rgba(255, 255, 255, 0.1);
+        --color-surface-inset: rgba(255, 255, 255, 0.05);
+        --color-text-primary: #FFFFFF;
+        --color-text-secondary: #E0E0E0;
+        --color-border: #333333;
+        --color-accent-text: #FFFFFF;
+        --color-shadow: rgba(0,0,0,0.2);
+      }
+      .kamo-pattern {
+        background-color: var(--color-primary);
+        background-image: 
+          radial-gradient(circle at 25% 25%, rgba(239, 68, 68, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 75% 75%, rgba(239, 68, 68, 0.05) 0%, transparent 50%);
+        background-size: 400px 400px;
+      }
       body {
-        font-family: 'Inter', sans-serif;
+        background-color: var(--color-primary);
+        color: var(--color-text-secondary);
       }
     </style>
+
+<link rel="stylesheet" href="/index.css">
   <script type="importmap">
 {
   "imports": {
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.22.0"
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.5"
   }
 }
 </script>
+  <script type="module" crossorigin src="/assets/index-wjFOBw1d.js"></script>
 </head>
-  <body class="bg-gray-50">
+  <body class="bg-primary text-text-secondary kamo-pattern">
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
